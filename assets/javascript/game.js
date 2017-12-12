@@ -7,6 +7,13 @@ var alreadyGuessed;
 var chances;
 var isLetter;
 var correctGuesses;
+var hangmanArt=["......<span class='text-art'>OOO</span>......<br>.....<span class='text-art'>OOOOO</span>.....<br>......<span class='text-art'>OOO</span>......<br>....<span class='text-art'>==I.I==</span>....<br>...<span class='text-art'>//|***|\\\\</span>...<br>.<span class='text-art'>mm/.|***|.\\\\mm</span><br>.....<span class='text-art'>/===\\</span>.....<br>....<span class='text-art'>/ / \\ \\</span>....<br>....<span class='text-art'>| | | |</span>....<br>...<span class='text-art'><__| |__></span>...<br>",
+"......<span class='text-art'>OOO</span>......<br>.....<span class='text-art'>OOOOO</span>.....<br>......<span class='text-art'>OOO</span>......<br>....<span class='text-art'>==I.I==</span>....<br>...<span class='text-art'>//|***|\\\\</span>...<br>.<span class='text-art'>mm/.|***|.\\\\mm</span><br>.....<span class='text-art'>/===\\</span>.....<br>....<span class='text-art'>/ /</span>........<br>....<span class='text-art'>| |</span>........<br>...<span class='text-art'><__|</span>........<br>",
+"......<span class='text-art'>OOO</span>......<br>.....<span class='text-art'>OOOOO</span>.....<br>......<span class='text-art'>OOO</span>......<br>....<span class='text-art'>==I.I==</span>....<br>...<span class='text-art'>//|***|\\\\</span>...<br>.<span class='text-art'>mm/.|***|.\\\\mm</span><br>..........<span class='text-art'></span>.....<br>........<span class='text-art'></span>.......<br>.......<span class='text-art'></span>........<br>.......<span class='text-art'></span>........<br>",
+"......<span class='text-art'>OOO</span>......<br>.....<span class='text-art'>OOOOO</span>.....<br>......<span class='text-art'>OOO</span>......<br>....<span class='text-art'>==I.I==</span>....<br>...<span class='text-art'>//|***|</span>.....<br>.<span class='text-art'>mm/.|***|</span>.....<br>..........<span class='text-art'></span>.....<br>.......<span class='text-art'></span>........<br>.......<span class='text-art'></span>........<br>.......<span class='text-art'></span>........<br>",
+"......<span class='text-art'>OOO</span>......<br>.....<span class='text-art'>OOOOO</span>.....<br>......<span class='text-art'>OOO</span>......<br>....<span class='text-art'>==I.I==</span>....<br>..........<span class='text-art'></span>.....<br>..........<span class='text-art'></span>.....<br>..........<span class='text-art'></span>.....<br>.......<span class='text-art'></span>........<br>.......<span class='text-art'></span>........<br>.......<span class='text-art'></span>........<br>",
+"......<span class='text-art'></span>.........<br>..........<span class='text-art'></span>.....<br>.........<span class='text-art'></span>......<br>...........<span class='text-art'></span>....<br>..........<span class='text-art'></span>.....<br>..........<span class='text-art'></span>.....<br>..........<span class='text-art'></span>.....<br>.......<span class='text-art'></span>........<br>.......<span class='text-art'></span>........<br>.......<span class='text-art'></span>........<br>"
+];
 
 function newGame(){
 	word = dictionary[Math.floor(Math.random()*dictionary.length)];
@@ -16,7 +23,7 @@ function newGame(){
 	{
 		solution.push("_");
 	}
-	chances = 6;
+	chances = 5;
 	correctGuesses = 0;
 	drawScreen();
 };
@@ -27,7 +34,7 @@ function checkLetter(letter){
 
     for (i=0; i<guesses.length; i++)
     {
-         if (letter == guesses[i]){
+         if (letter.toUpperCase() == guesses[i]){
          	alreadyGuessed = true;
          }
     }
@@ -42,13 +49,20 @@ function checkLetter(letter){
     		    correctGuesses += 1;
     	        }
         }
+
+        if (!inWord){
+        chances -=1;
+        }
     }
+
+  
 };
 
 function drawScreen(){
-	$("#guessed").text(guesses);
-	$("#word").text(solution);
-	$("footer").text(chances + " guesses remaining!");
+	$("#guessed").html(guesses);
+	$("#word").html(solution);
+	$("footer").html("chances remaining: ".toUpperCase()+chances);
+	$("#hangman-pic").html(hangmanArt[chances]);
 }
 
 $(document).ready(function(){
@@ -57,13 +71,17 @@ $(document).ready(function(){
   	console.log(event.keyCode);
   	if(64<event.keyCode && event.keyCode<91){
         checkLetter(event.key);
-        if (!inWord){
-        chances -=1;
-        }
     }
     drawScreen();
-    if (chances <= 0 || correctGuesses == word.length){
-    	newGame();
+    if (chances < 1){
+    	$("#hangman-pic").html(hangmanArt[0]);
+    	alert("Game over!\nThe word was "+word.toUpperCase());
+       	newGame();
+    }
+    else if (correctGuesses == word.length){
+    	$("#word").html(solution);
+    	alert("You win!\nThe word was "+word.toUpperCase());
+       	newGame();
     }
    
  };

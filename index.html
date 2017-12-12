@@ -5,25 +5,28 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
+    <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+       <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   </head>
   <body>
-
-	<header class = ""> <!-- Title bar -->
-
+     
+	<header class = "h1 text-center"> <!-- Title bar -->
+        HANGMAN
 	</header>
-
+    
+    <div id="bar"><!-- simulates the msDos screen -->
+    </div>
+        
     <div class="container"> <!-- game body is in here -->
     	
-    	<div class="row"><!-- hangman on left, guessed letters on right -->
+    	<div class="row" id ="row1"><!-- hangman on left, guessed letters on right -->
                
-    	    <div class="col-6" id = "hangman-pic"> 
-    	        <img src="images/..." alt="Our poor victim">
+    	    <div class="col-6 h1" id = "hangman-pic"> 
     	    </div>
 
-    	    <div class="col-6" id = "guessed">
+    	    <div class="col-6 h1 text-right" id = "guessed">
 
     	    </div>
 
@@ -31,7 +34,7 @@
 
         <div class="row"><!-- word being guessed -->
 
-			<div class="text-center" id="word">
+			<div class="col-6 text-left h2" id="word">
 
 			</div>
 
@@ -39,7 +42,7 @@
 
     </div>
 
-    <footer class = ""><!-- game stats here -->
+    <footer class = "fixed-bottom h1 text-center"><!-- game stats here -->
 
     </footer>
     <!-- Optional JavaScript -->

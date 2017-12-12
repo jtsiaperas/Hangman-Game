@@ -1,0 +1,36 @@
+body,h1,header,footer {
+	font-family: "VT323";
+	color: white;
+}
+
+#bar{
+	background-color: #00ffff;
+	height: 2vh;
+	width: 100vw;
+	padding: 0px;
+	margin: 0px;
+}
+
+body {
+	height: 100vh;
+	background-color: black;
+}
+
+#row1 {
+	height: 50vh;
+}
+
+#word {
+	letter-spacing: 10px;
+}
+
+header {
+    background-color: blue;
+    padding: 0px;
+	margin: 0px;
+}
+
+.h1{
+	margin: 0;
+	padding: 0;
+}
