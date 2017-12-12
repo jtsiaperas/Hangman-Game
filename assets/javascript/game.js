@@ -73,6 +73,7 @@ $(document).ready(function(){
         checkLetter(event.key);
     }
     drawScreen();
+    
     if (chances < 1){
     	$("#hangman-pic").html(hangmanArt[0]);
     	alert("Game over!\nThe word was "+word.toUpperCase());
