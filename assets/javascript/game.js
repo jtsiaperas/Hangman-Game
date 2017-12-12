@@ -25,6 +25,7 @@ function newGame(){
 	}
 	chances = 5;
 	correctGuesses = 0;
+	$("#bar").text("");
 	drawScreen();
 };
 
@@ -73,16 +74,16 @@ $(document).ready(function(){
         checkLetter(event.key);
     }
     drawScreen();
-    
+
     if (chances < 1){
     	$("#hangman-pic").html(hangmanArt[0]);
-    	alert("Game over!\nThe word was "+word.toUpperCase());
-       	newGame();
+    	$("#bar").text("Game over!\nThe word was ".toUpperCase()+word.toUpperCase());
+       	setTimeout(function(){newGame();},1000);
     }
     else if (correctGuesses == word.length){
-    	$("#word").html(solution);
-    	alert("You win!\nThe word was "+word.toUpperCase());
-       	newGame();
+    	drawScreen();
+        $("#bar").text("You win!\nThe word was ".toUpperCase()+word.toUpperCase());
+       	setTimeout(function(){newGame();},1000);
     }
    
  };

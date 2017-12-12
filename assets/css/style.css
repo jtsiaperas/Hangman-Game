@@ -5,7 +5,7 @@ body,h1,header,footer {
 
 #bar{
 	background-color: #00ffff;
-	height: 2vh;
+	min-height: 2vh;
 	width: 100vw;
 	padding: 0px;
 	margin: 0px;
@@ -17,7 +17,7 @@ body {
 }
 
 #row1 {
-	height: 50vh;
+	min-height: 50vh;
 }
 
 #word {
@@ -33,4 +33,8 @@ header {
 .h1{
 	margin: 0;
 	padding: 0;
+}
+
+.text-art{
+	color: #ff00ff;
 }
