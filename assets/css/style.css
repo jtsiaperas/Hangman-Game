@@ -35,6 +35,6 @@ header {
 	padding: 0;
 }
 
-.text-art{
+.text-art, #guessed{
 	color: #ff00ff;
 }
