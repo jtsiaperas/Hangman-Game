@@ -88,12 +88,12 @@ $(document).ready(function(){
     if (chances < 1){
     	$("#hangman-pic").html(hangmanArt[0]);
     	$("#bar").text("Game over!\nThe word was ".toUpperCase()+word.toUpperCase());
-       	setTimeout(function(){newGame();},1000);
+       	setTimeout(function(){newGame();},10000);
     }
     else if (correctGuesses == word.length){
     	drawScreen();
         $("#bar").text("You win!\nThe word was ".toUpperCase()+word.toUpperCase());
-       	setTimeout(function(){newGame();},1000);
+       	setTimeout(function(){newGame();},10000);
     }
    
  };
